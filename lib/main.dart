@@ -13,12 +13,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: AnaEkran(),
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const AnaEkran(),
     );
   }
 }
+
 class AnaEkran extends StatefulWidget {
-  const AnaEkran({Key? key}) : super(key: key);
+  const AnaEkran({super.key});
 
   @override
   State<AnaEkran> createState() => _AnaEkranState();
@@ -28,41 +33,37 @@ class _AnaEkranState extends State<AnaEkran> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Scaffold(
-          body: Container(
+      child: Scaffold(
+        body: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
-          image: DecorationImage(
-          image: AssetImage("assets/resimler/images1.png"),
-    fit: BoxFit.cover,
-    ),
-    ),
-
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                    Container(
-                      margin: EdgeInsets.only(bottom: 10 ,left: 35,right: 35),
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText: "E-mail"
-                        ),
-                      ),
-                    ),
-                  Container(
-                    margin: EdgeInsets.only(bottom:60 ,left: 35,right: 35),
-                    child: TextField(
-                      decoration: InputDecoration(
-                          hintText: "Password",suffixIcon: const Icon(MyFlutterApp.eye_slash)
-                      ),
-                    ),
-                  )
-                ],
-              ),
+            image: DecorationImage(
+              image: AssetImage("assets/resimler/images1.png"),
+              fit: BoxFit.cover,
             ),
           ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                margin: EdgeInsets.only(bottom: 10, left: 35, right: 35),
+                child: TextField(
+                  decoration: InputDecoration(hintText: "E-mail"),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(bottom: 60, left: 35, right: 35),
+                child: TextField(
+                  decoration: InputDecoration(
+                      hintText: "Password",
+                      suffixIcon: const Icon(MyFlutterApp.eye_slash)),
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
-
