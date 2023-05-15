@@ -30,6 +30,14 @@ class AnaEkran extends StatefulWidget {
 }
 
 class _AnaEkranState extends State<AnaEkran> {
+  bool _parolaGorunur = true;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _parolaGorunur = true;
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -55,9 +63,23 @@ class _AnaEkranState extends State<AnaEkran> {
               Container(
                 margin: EdgeInsets.only(bottom: 60, left: 35, right: 35),
                 child: TextField(
+                  obscureText: _parolaGorunur,
                   decoration: InputDecoration(
                       hintText: "Password",
-                      suffixIcon: const Icon(MyFlutterApp.eye_slash)),
+                      suffixIcon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              if (_parolaGorunur == true) {
+                                _parolaGorunur = false;
+                              } else {
+                                _parolaGorunur = true;
+                              }
+                            });
+                          },
+                          icon: Icon(
+                            MyFlutterApp.eye_slash,
+                            color: _parolaGorunur ? Colors.grey : Colors.blue,
+                          ))),
                 ),
               )
             ],
